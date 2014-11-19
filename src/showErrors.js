@@ -9,7 +9,7 @@
       getTrigger = function(options) {
         var trigger;
         trigger = showErrorsConfig.trigger;
-        if (options && (options.trigger != null)) {
+        if (options && (options.trigger ! = null)) {
           trigger = options.trigger;
         }
         return trigger;
@@ -36,7 +36,7 @@
         if (!inputName) {
           throw "show-errors element has no child input elements with a 'name' attribute and a 'form-control' class";
         }
-        inputEl.addEventListener('trigger', function () {
+        inputEl.addEventListener(trigger, function () {
           $timeout(function(){
             blurred = true;
             toggleClasses(formCtrl[inputName].$invalid);
