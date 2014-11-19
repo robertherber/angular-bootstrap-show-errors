@@ -29,13 +29,13 @@
         showSuccess = getShowSuccess(options);
         trigger = getTrigger(options);
         inputEl = el[0].querySelector('.form-control[name]');
+        if (!inputEl) {
+          throw "show-errors element has no child input elements with a 'name' attribute and a 'form-control' class";
+        }
         inputName = inputEl.attributes.name.value;
         inputEl = (inputEl.attributes.chosen) ? inputEl.parentElement : inputEl;
         inputNgEl = angular.element(inputEl);
         
-        if (!inputName) {
-          throw "show-errors element has no child input elements with a 'name' attribute and a 'form-control' class";
-        }
         inputEl.addEventListener(trigger, function () {
           $timeout(function(){
             blurred = true;
