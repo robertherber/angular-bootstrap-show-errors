@@ -9,7 +9,7 @@
       getTrigger = function(options) {
         var trigger;
         trigger = showErrorsConfig.trigger;
-        if (options && (options.trigger ! = null)) {
+        if (options && (options.trigger != null)) {
           trigger = options.trigger;
         }
         return trigger;
