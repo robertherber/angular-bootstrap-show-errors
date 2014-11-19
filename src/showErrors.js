@@ -29,15 +29,19 @@
         showSuccess = getShowSuccess(options);
         trigger = getTrigger(options);
         inputEl = el[0].querySelector('.form-control[name]');
+        inputName = inputEl.attributes.name.value;
+        inputEl = (inputEl.attributes.chosen) ? inputEl.parentElement : inputEl;
         inputNgEl = angular.element(inputEl);
-        inputName = inputNgEl.attr('name');
+        
         if (!inputName) {
           throw "show-errors element has no child input elements with a 'name' attribute and a 'form-control' class";
         }
-        inputNgEl.bind(trigger, function() {
-          blurred = true;
-          return toggleClasses(formCtrl[inputName].$invalid);
-        });
+        inputEl.addEventListener('trigger', function () {
+          $timeout(function(){
+            blurred = true;
+            toggleClasses(formCtrl[inputName].$invalid);
+          });
+        }, true);
         scope.$watch(function() {
           return formCtrl[inputName] && formCtrl[inputName].$invalid;
         }, function(invalid) {
