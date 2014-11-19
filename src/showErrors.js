@@ -39,7 +39,9 @@
         inputEl.addEventListener(trigger, function () {
           $timeout(function(){
             blurred = true;
-            toggleClasses(formCtrl[inputName].$invalid);
+            if(formCtrl[inputName]){
+              toggleClasses(formCtrl[inputName].$invalid);
+            }
           });
         }, true);
         scope.$watch(function() {
